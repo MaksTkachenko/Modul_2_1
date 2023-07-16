@@ -57,8 +57,8 @@ def play_fun():
                 print("Невірне слово!!!")
 
         elif letter in list_guesses:
+            count_play -= 1
             print("Ви вже вгадали цю літеру")
-            break
 
         elif letter in random_word:
             list_guesses.append(letter)
