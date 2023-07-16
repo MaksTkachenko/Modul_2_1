@@ -42,22 +42,18 @@ def play_fun():
 
     while count_play < play_num:
 
-        count_play += 1
-
         letter = input_letter()
 
-        if count_play == play_num:
-            print("На жаль, ви не вгадали, пощастити інший раз.")
-            break
-        elif len(letter) > 1:
+        if len(letter) > 1:
             if letter == random_word:
-                print("Вітаю ви вгадали!!!")
+                print("Вітаю ви вгадали слово!!!")
                 break
-            elif letter not in random_word:
+            else:
+                # letter not in random_word:
+                count_play += 1
                 print("Невірне слово!!!")
 
         elif letter in list_guesses:
-            count_play -= 1
             print("Ви вже вгадали цю літеру")
 
         elif letter in random_word:
@@ -70,10 +66,18 @@ def play_fun():
                     masked_word += "*"
             print(masked_word)
             if '*' not in masked_word:
-                print("Вітаємо! Ви вгадали слово.")
+                print("Вітаємо! Ви вгадали слово!!!")
                 break
         else:
+            count_play += 1
             print("Такої літери немає")
+
+        if count_play == play_num:
+            print("На жаль, ви не вгадали, пощастити інший раз.")
+            break
+
+        attempts = play_num - count_play
+        print(f"Залишилось {attempts} спроб")
 
 
 if __name__ == "__main__":
